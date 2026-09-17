@@ -1,0 +1,8 @@
+{
+  "name": "rpg-helper",
+  "description": "Claude runs your tabletop RPG. Two D&D 5e (2014) skills over an Obsidian campaign vault: narrate-encounter puts Claude in the DM's chair while people play their characters, and simulate-encounter fights a party against a monster set with nobody playing, to answer who would win.",
+  "version": "1.0.0",
+  "author": {
+    "name": "beknar"
+  }
+}

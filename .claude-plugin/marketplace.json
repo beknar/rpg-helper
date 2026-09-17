@@ -1,0 +1,16 @@
+{
+  "name": "rpg-helper",
+  "owner": {
+    "name": "beknar"
+  },
+  "metadata": {
+    "description": "Claude at the table: DM a session, or simulate a fight"
+  },
+  "plugins": [
+    {
+      "name": "rpg-helper",
+      "source": "./",
+      "description": "Two D&D 5e (2014) skills over an Obsidian campaign vault: narrate-encounter runs the table with Claude as DM, and simulate-encounter fights a party against monsters with nobody playing to answer who would win"
+    }
+  ]
+}

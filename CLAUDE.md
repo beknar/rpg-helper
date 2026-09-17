@@ -1,0 +1,106 @@
+# CLAUDE.md
+
+Guidance for Claude Code when working **on this repository**. This is a
+Claude Code plugin, not a campaign — for how to *use* the skills, see `README.md`.
+
+## What this repo is
+
+A plugin containing **two D&D 5e (2014) skills** that operate on an Obsidian
+campaign vault. There is **no application code** — it is markdown instructions
+that Claude loads and follows.
+
+| Skill | Claude's role | Who decides the PCs' actions |
+|---|---|---|
+| `narrate-encounter` | Dungeon Master | **A human.** Always |
+| `simulate-encounter` | Combat simulator | **Claude.** Nobody is playing |
+
+**That distinction is the plugin's spine.** Every ambiguity about which skill
+applies resolves to that one question. Do not blur it.
+
+## Layout
+
+```text
+.claude-plugin/plugin.json      manifest — name, description, version
+.claude-plugin/marketplace.json for installing this repo as a marketplace
+skills/<name>/SKILL.md          the skill: frontmatter + main instructions
+skills/<name>/references/*.md   loaded on demand by the SKILL.md that names them
+```
+
+## Invariants — do not break these
+
+**YOU MUST keep the skills campaign-neutral.** They were extracted from one
+specific campaign and generalised. Do not reintroduce a campaign's proper
+nouns, file counts, or party composition. Worked examples use invented
+placeholders (`Varn` the guide, `Kess`, `Alder`, the Cracked Tankard) and
+should stay that way.
+
+**IMPORTANT: `simulate-encounter` writes exactly one file** — a report in
+`<vault>/_QA/Simulations/`. It must never edit a PC sheet, a creature file,
+`_World/_flags.md`, a session file, or anything else. That guarantee is the
+reason the skill exists separately from `narrate-encounter`; if an edit would
+weaken it, the edit is wrong.
+
+**The edition is 5e 2014, never 2024.** The differences that matter are listed
+in `skills/simulate-encounter/references/combat-engine.md` §2014 vs 2024.
+gm-apprentice's `ttrpg-expert` ships 2024 — treat it as a different system.
+
+**`narrate-encounter` must never decide a PC's actions.** See
+`references/table-management.md` §Absent Players. Requests to simulate both
+sides belong to the other skill.
+
+**Do not hard-code vault contents.** Coverage varies wildly between vaults —
+some give every creature a `## Tactics` section, some give it to a handful.
+Write "check the vault" rather than a number.
+
+## Editing a skill
+
+**The `description:` in SKILL.md frontmatter is the routing surface.** It is
+the only part Claude sees before deciding whether to load the skill, so it
+carries the trigger phrases and the explicit NOT-for list. Changing behaviour
+usually means changing the description too.
+
+**Keep SKILL.md as the spine and push detail into `references/`.** The main
+file should be readable start to finish; a reference is loaded only when the
+SKILL.md points at it for a specific job.
+
+**Prose conventions:** wrap around 72 columns, bold the load-bearing clause
+rather than whole paragraphs, and prefer a concrete worked example to an
+abstract rule. State *why* a rule exists where the reason is not obvious —
+these files are read by someone deciding whether to follow them.
+
+## Testing a change
+
+There is no test suite. Verify by running it:
+
+```bash
+claude                          # from a directory containing a campaign vault
+/skills                         # confirm both skills are listed
+```
+
+Then invoke the skill and check the behaviour you changed. For
+`simulate-encounter`, **verify the non-canon guarantee held**:
+
+```bash
+git status --porcelain <vault>/Characters   # must be empty
+```
+
+A simulation that modified a character sheet is a release blocker, not a bug.
+
+## Dependencies
+
+**Soft dependency on `gm-apprentice`** for the vault schema these skills read
+(`_meta/`, `_Campaign/`, `Characters/PCs/`, `Creatures/`, frontmatter
+conventions, the session document chain). The skills do not call its code and
+work against any vault with that shape, but the folder names come from it.
+
+**No runtime dependencies.** No Python, no npm, no build step.
+
+## What not to do
+
+- **Do not add a dice-rolling script** without being asked. The current design
+  rolls in-model by deliberate choice; the tradeoff (not reproducible, but no
+  tooling and handles any homebrew) is recorded in the README.
+- **Do not merge the two skills.** They differ on exactly one thing and that
+  thing is the point.
+- **Do not add campaign content** — encounters, monsters, settings. This is a
+  plugin, not a module.

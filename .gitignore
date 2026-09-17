@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# a local vault linked in for testing
+.claude/
