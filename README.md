@@ -238,3 +238,18 @@ CLAUDE.md           guidance for working on this plugin
 
 See `CLAUDE.md` before editing a skill — it records the invariants, including
 the ones that look like details and are not.
+
+---
+
+## Licence
+
+**MIT** — see [`LICENSE`](LICENSE). Use it, fork it, sell it; keep the
+copyright notice.
+
+The skills describe D&D 5e (2014) mechanics in their own words and vendor no
+third-party text. If you extend them with content from the **SRD 5.1**, note
+that it is CC BY 4.0 and requires attribution.
+
+*Dungeons & Dragons and D&D are trademarks of Wizards of the Coast LLC. This
+project is unofficial, and is not affiliated with or endorsed by Wizards of
+the Coast.*
