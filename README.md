@@ -62,6 +62,32 @@ To install from a local clone instead, point the marketplace at the directory:
 /plugin install rpg-helper@rpg-helper
 ```
 
+### Let the skills read their own references
+
+**Do this, or the skills run half-blind.** Each skill keeps its detailed
+procedures in `references/`, and those files sit in the plugin cache,
+outside your project. Claude Code treats that as outside the working
+directory: in an interactive session you get a permission prompt the first
+time a reference is opened, often mid-scene, and in a headless run
+(`claude -p`) the read is **silently refused** and the skill carries on
+from its main file alone.
+
+Allow reads of the plugin's folder in your project's
+`.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Read(~/.claude/plugins/cache/rpg-helper/**)"
+    ]
+  }
+}
+```
+
+It grants reads only, only of this plugin, and survives updates because
+the version folder is inside the glob.
+
 ### Verify
 
 ```text
