@@ -252,7 +252,8 @@ felt wrong for its CR. That is usually the reason the GM ran it.
 
 **Then offer a player recap, once, in one line** — *"Want a
 player-facing recap of this for the site?"* The Play Notes can never
-be published; the recap can. Procedure: `player-recap.md`.
+be published; the recap can. A yes hands off to the `dry-run-recap`
+skill, which writes it.
 
 ## Repeat Runs
 
@@ -271,6 +272,5 @@ thing; or the same set piece dropped for a different party.
 
 Everything in `canon-boundaries.md` holds regardless of which mode
 you are in. Play Notes — canon or `_inbox/` — remain the only file
-this skill creates, **except a dry run's player recap, written only
-when the user asks for one** (`player-recap.md`). No entity files, no canon promotion, no edits to
+this skill creates. No entity files, no canon promotion, no edits to
 `Encounters/`, `Planning/`, sheets, `_source/`, or `_World/_flags.md`.

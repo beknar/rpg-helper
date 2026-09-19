@@ -1,6 +1,6 @@
 ---
 name: narrate-encounter
-description: "Use when Claude runs a tabletop campaign at the table itself — narrating a scene or encounter and playing every NPC, while one or more people play their characters. Claude is the DM here: it frames beats, voices NPCs, calls for and resolves D&D 5e (2014) rolls, tracks combat state, and honours the campaign vault's canon and spoiler fences. It reads an Obsidian vault built to the gm-apprentice schema, and asks which vault before reading anything when a workspace holds more than one campaign. It can also draft an encounter to run when no prepped one fits, run a session under a name the user chooses, and report what has already been played. Trigger on 'run this encounter for us', 'be our DM', 'you DM, I'll play', 'narrate the scene', 'take us into', 'let's play', 'solo play', 'I'll play the cleric, you run it', 'make us an encounter and run it', 'we need a fight', 'run the <named encounter>'. Defaults to relay mode for real sessions: players sit at a physical table or in a VTT, one operator relays their decisions to the CLI, Claude never rolls, and in combat Claude builds the opposing stat blocks while the operator runs the fight and relays the outcome back. Trigger relay on 'I'll relay for the table', 'we're on Roll20', 'the group decided', 'the party rolled', 'here's the combat result', 'build me the stat blocks and I'll run it'. Also trigger on naming a session — 'run this as a session called X', 'name this session X', 'dry run, call it X' — and on read-only session queries: 'what sessions are there', 'list sessions', 'show me the dry runs', 'where did we leave off', 'what have we played'. Also trigger on turning a dry run into something players can read — 'write a player recap', 'recap this dry run for the site', 'make a publishable version of the dry run' — which writes a separate player-facing recap with every operator-only detail left out. NOT for deciding the PCs' actions yourself with nobody playing (simulate-encounter), assisting a human DM who is running the table (session-play), preparing a session (session-prep), or writing encounter content to be run later (ttrpg-expert)."
+description: "Use when Claude runs a tabletop campaign at the table itself — narrating a scene or encounter and playing every NPC, while one or more people play their characters. Claude is the DM here: it frames beats, voices NPCs, calls for and resolves D&D 5e (2014) rolls, tracks combat state, and honours the campaign vault's canon and spoiler fences. It reads an Obsidian vault built to the gm-apprentice schema, and asks which vault before reading anything when a workspace holds more than one campaign. It can also draft an encounter to run when no prepped one fits, run a session under a name the user chooses, and report what has already been played. Trigger on 'run this encounter for us', 'be our DM', 'you DM, I'll play', 'narrate the scene', 'take us into', 'let's play', 'solo play', 'I'll play the cleric, you run it', 'make us an encounter and run it', 'we need a fight', 'run the <named encounter>'. Defaults to relay mode for real sessions: players sit at a physical table or in a VTT, one operator relays their decisions to the CLI, Claude never rolls, and in combat Claude builds the opposing stat blocks while the operator runs the fight and relays the outcome back. Trigger relay on 'I'll relay for the table', 'we're on Roll20', 'the group decided', 'the party rolled', 'here's the combat result', 'build me the stat blocks and I'll run it'. Also trigger on naming a session — 'run this as a session called X', 'name this session X', 'dry run, call it X' — and on read-only session queries: 'what sessions are there', 'list sessions', 'show me the dry runs', 'where did we leave off', 'what have we played'. NOT for turning a finished dry run into something players can read (dry-run-recap), deciding the PCs' actions yourself with nobody playing (simulate-encounter), assisting a human DM who is running the table (session-play), preparing a session (session-prep), or writing encounter content to be run later (ttrpg-expert)."
 ---
 
 Claude runs the table — D&D 5e (2014). No human DM is present. The
@@ -309,18 +309,14 @@ Short form:
 
 ## What You Write
 
-You own one **Play Notes file**. Nothing else — with one
-exception, below. Full procedure in `references/session-files.md`.
+You own one **Play Notes file**. Nothing else. Full procedure
+in `references/session-files.md`.
 
-**The exception: a player recap of a dry run, on request.** A dry
-run's Play Notes are a GM document and cannot be published. When the
-user wants a run shown on a campaign site — to show a feature off, or
-to record a test — write a **second file, for players**, to
-`Dry Runs/Dry Run Recap - {Name} - YYYY-MM-DD.md`. The rule: **if no
-player at the table heard or saw it, it is not in the recap.** Offer
-it once at the end of a dry run; never write one for canon play.
-Full procedure, including what to tell the user about publishing it:
-`references/player-recap.md`.
+**A dry run's Play Notes can never be published** — they are a GM
+document. If the user wants a run shown to players, that is the
+`dry-run-recap` skill's job, not yours: it writes a separate
+player-facing file. Offer it once, in one line, at the end of a dry
+run.
 
 **Settle canon-or-dry-run before the first frame.** It decides
 where everything goes and can't be fixed cleanly afterwards.
@@ -459,6 +455,7 @@ canon: `references/canon-boundaries.md`.
 |---|---|
 | A human DM wants lookups while they run it | `session-play` |
 | Session over — recap, entities, canon | `session-wrapup` |
+| A dry run should be shown to players | `dry-run-recap` |
 | Prep the next session | `session-prep` |
 | Rules or stat block the vault lacks | `ttrpg-expert` (check edition; convert from `_source/`, never lift) |
 | Players went somewhere with no content | cold open (`references/cold-open.md`), mark it, file after |

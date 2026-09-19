@@ -5,7 +5,7 @@ Claude Code plugin, not a campaign — for how to *use* the skills, see `README.
 
 ## What this repo is
 
-A plugin containing **two D&D 5e (2014) skills** that operate on an Obsidian
+A plugin containing **three D&D 5e (2014) skills** that operate on an Obsidian
 campaign vault. There is **no application code** — it is markdown instructions
 that Claude loads and follows.
 
@@ -13,9 +13,14 @@ that Claude loads and follows.
 |---|---|---|
 | `narrate-encounter` | Dungeon Master | **A human.** Always |
 | `simulate-encounter` | Combat simulator | **Claude.** Nobody is playing |
+| `dry-run-recap` | Writer, after the fact | Nobody — the dry run is over |
 
-**That distinction is the plugin's spine.** Every ambiguity about which skill
+**The first two differ on who decides the PCs' actions, and that
+distinction is the plugin's spine.** Every ambiguity about which of them
 applies resolves to that one question. Do not blur it.
+
+`dry-run-recap` is the odd one out: it plays nothing. It turns a finished
+dry run's GM-only Play Notes into a player-facing page.
 
 ## Layout
 
@@ -39,6 +44,12 @@ should stay that way.
 `_World/_flags.md`, a session file, or anything else. That guarantee is the
 reason the skill exists separately from `narrate-encounter`; if an edit would
 weaken it, the edit is wrong.
+
+**IMPORTANT: `dry-run-recap` writes exactly one file** — a recap in
+`<vault>/Dry Runs/` — and nothing in it may be something no player heard
+or saw at the table. That rule is the skill. It must never edit the Play
+Notes, a sheet, the publish manifest or the vault's config, and it must
+never promote a recap past `DRAFT`: that would make a test run canon.
 
 **The edition is 5e 2014, never 2024.** The differences that matter are listed
 in `skills/simulate-encounter/references/combat-engine.md` §2014 vs 2024.
@@ -74,7 +85,7 @@ There is no test suite. Verify by running it:
 
 ```bash
 claude                          # from a directory containing a campaign vault
-/skills                         # confirm both skills are listed
+/skills                         # confirm all three skills are listed
 ```
 
 Then invoke the skill and check the behaviour you changed. For
@@ -100,7 +111,10 @@ work against any vault with that shape, but the folder names come from it.
 - **Do not add a dice-rolling script** without being asked. The current design
   rolls in-model by deliberate choice; the tradeoff (not reproducible, but no
   tooling and handles any homebrew) is recorded in the README.
-- **Do not merge the two skills.** They differ on exactly one thing and that
+- **Do not fold `dry-run-recap` back into `narrate-encounter`.** It was split
+  out so that `narrate-encounter` keeps its one-file rule and so a recap can
+  be asked for directly, on any old run.
+- **Do not merge the two table skills.** They differ on exactly one thing and that
   thing is the point.
 - **Do not add campaign content** — encounters, monsters, settings. This is a
   plugin, not a module.

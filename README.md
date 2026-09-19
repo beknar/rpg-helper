@@ -1,16 +1,18 @@
 # rpg-helper
 
-Claude at the table. Two **D&D 5e (2014)** skills that read an Obsidian
-campaign vault and either run the game or fight it out.
+Claude at the table. Three **D&D 5e (2014)** skills that read an Obsidian
+campaign vault: two run the game or fight it out, and one writes a test
+run up for players.
 
 | Skill | What it does | Who plays the PCs |
 |---|---|---|
 | **`narrate-encounter`** | Claude is the **DM**. Frames scenes, voices NPCs, calls and resolves rolls, tracks combat and canon | **You do** |
 | **`simulate-encounter`** | Claude is a **combat simulator**. Fights a party against monsters round by round and says who wins | **Nobody.** Claude plays both sides |
+| **`dry-run-recap`** | Turns a finished **dry run** into a player-facing recap for a campaign site, with everything players never saw left out | Nobody — the game is over |
 
-**The whole distinction is who decides what the PCs do.** If a human is
-declaring actions, you want `narrate-encounter`. If you want an answer rather
-than a game, you want `simulate-encounter`.
+**Between the first two, the whole distinction is who decides what the
+PCs do.** If a human is declaring actions, you want `narrate-encounter`.
+If you want an answer rather than a game, you want `simulate-encounter`.
 
 ---
 
@@ -51,7 +53,8 @@ To install from a local clone instead, point the marketplace at the directory:
 /skills
 ```
 
-Both `narrate-encounter` and `simulate-encounter` should be listed. If they
+`narrate-encounter`, `simulate-encounter` and `dry-run-recap` should all
+be listed. If they
 are not, the plugin did not load — check `/plugin` for its status.
 
 ### Without installing (local development)
@@ -113,19 +116,8 @@ playing directly"* for direct.
 
 - **Canon play** → a Play Notes file in the session chain under
   `Chapters/<chapter>/Sessions/`.
-- **Dry run** → `_inbox/`, where nothing treats it as canon.
-
-- **A player recap of a dry run**, only when you ask → `Dry Runs/`.
-  The dry run's own notes are written for the GM and full of things
-  players must not see: stat blocks, DCs, what the monster does if
-  they don't take the bait. The recap is a second file written for
-  players from the start, for showing a feature off on a published
-  campaign site. **Anything no player heard or saw at the table is
-  left out.** It stays marked as a dry run and not canon.
-
-  Say *"write a player recap"* or *"recap this for the site"*. It
-  doesn't publish anything itself: it tells you what stands between
-  the recap and your site, usually a setting that drops drafts.
+- **Dry run** → `_inbox/`, where nothing treats it as canon. At the end
+  it offers a player recap, which is `dry-run-recap`'s job.
 
 **It never writes entity files.** Improvised NPCs and locations are marked
 `NEW-NPC` / `NEW-LOC` in the Play Notes for you to promote deliberately, with
@@ -180,12 +172,53 @@ sheet — no hit points, slots, conditions, status or XP change anywhere.
 
 ---
 
+## Using `dry-run-recap`
+
+### Calling it
+
+> *"Write a player recap of that dry run."*
+> *"Recap the Sip of Blood dry run for the site."*
+> *"Make a publishable version of yesterday's test run."*
+
+Or:
+
+```text
+/dry-run-recap
+```
+
+### Why it exists
+
+A dry run's notes are written for the GM and full of things players must
+not see: stat blocks, DCs, what the monster does if they don't take the
+bait. No publishing filter can strip them, because they run through the
+prose. The recap is a **second file written for players from the start**,
+for showing a feature off on a published campaign site or recording a
+test.
+
+**The rule: anything no player heard or saw at the table is left out.**
+It asks once whether the site's readers might play the encounter later,
+since the recap gives it away.
+
+Run it straight after the dry run if you can. In the same conversation it
+works from the narration the table actually heard; later, it rebuilds the
+story from the notes and says so.
+
+### What it writes
+
+One file: `<vault>/Dry Runs/Dry Run Recap - <name> - YYYY-MM-DD.md`, marked
+as a dry run and not canon. **It publishes nothing and edits nothing
+else** — not the notes, not the manifest, not your publish settings. It
+ends by telling you what stands between the recap and your site, usually a
+setting that drops draft pages.
+
+---
+
 ## What they can't do
 
 Being explicit, because some of these are deliberate refusals rather than
 missing features.
 
-### Both skills
+### The table skills
 
 - **They don't build a party.** An empty `Characters/PCs/` stops them; that is
   a Session 0 job.
@@ -221,6 +254,16 @@ missing features.
   optimally, gated by Intelligence. Real players are worse, and its reports
   say so.
 
+### `dry-run-recap` specifically
+
+- **It only recaps dry runs.** A canon session reaches players through
+  gm-apprentice's `session-wrapup` and your site's own publishing.
+- **It won't mark a recap as canon** to get it past a draft filter. That
+  would make a test run part of your campaign.
+- **It can't recover narration that was never saved.** Recapping an old run
+  rebuilds the story from the notes, which is plainer than what the table
+  heard.
+
 ---
 
 ## Design notes
@@ -244,7 +287,7 @@ the module says what a monster does, that is the author's intent and it wins.
 
 ```text
 .claude-plugin/     manifest and marketplace descriptor
-skills/             the two skills, each SKILL.md + references/
+skills/             the three skills, each SKILL.md + references/
 CLAUDE.md           guidance for working on this plugin
 ```
 
