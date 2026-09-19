@@ -115,6 +115,18 @@ playing directly"* for direct.
   `Chapters/<chapter>/Sessions/`.
 - **Dry run** → `_inbox/`, where nothing treats it as canon.
 
+- **A player recap of a dry run**, only when you ask → `Dry Runs/`.
+  The dry run's own notes are written for the GM and full of things
+  players must not see: stat blocks, DCs, what the monster does if
+  they don't take the bait. The recap is a second file written for
+  players from the start, for showing a feature off on a published
+  campaign site. **Anything no player heard or saw at the table is
+  left out.** It stays marked as a dry run and not canon.
+
+  Say *"write a player recap"* or *"recap this for the site"*. It
+  doesn't publish anything itself: it tells you what stands between
+  the recap and your site, usually a setting that drops drafts.
+
 **It never writes entity files.** Improvised NPCs and locations are marked
 `NEW-NPC` / `NEW-LOC` in the Play Notes for you to promote deliberately, with
 `session-wrapup`.
