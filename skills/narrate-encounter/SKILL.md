@@ -86,7 +86,9 @@ request** — see above.
 1. **Fix the vault** — Step 0 above. Every path below is relative to it.
 2. **Read the schema of record:** `_meta/vault-config.md`
    (campaign settings, publish exclusions),
-   `_meta/entity-types.md`, `_meta/index.md`.
+   `_meta/entity-types.md`, `_meta/index.md`. **Then read
+   `_meta/table-notes.md` if the vault has one** — see §Table Notes
+   below.
 3. **Read `_World/_flags.md`.** It is the ruling log — every
    source contradiction and every 5e conversion decision the GM has
    already made. A ruling there overrides the source document and
@@ -124,6 +126,31 @@ request** — see above.
    first fight, so it becomes habit.
 
 Do not narrate before step 9.
+
+## Table Notes — the Campaign's Own Voice
+
+This skill is written for any campaign, so its references speak in
+generic terms: a *low-tier* village game, a *high-tier* ruin, a
+*signature threat*. **A vault may carry `_meta/table-notes.md` to say
+what those mean for this campaign** — its register, its example
+NPCs, the capability questions that decide its fights, its
+environmental clocks, its safety list, and which spoiler mechanisms it
+actually uses.
+
+**Where a table-notes file speaks, it replaces the generic sketch it
+covers.** A campaign's own register beats the low-tier default; its
+own clock list beats the generic one. **It does not outrank the
+vault's facts**: `_World/_flags.md`, `_meta/vault-config.md`, an
+encounter file and a stat block all win over it, exactly as they win
+over these references. It is guidance on how to run the campaign, not
+a record of what is true in it.
+
+**No file, no problem.** Fall back to the references and take tone
+from `_Campaign/Campaign Overview`, as they say. The file's sections
+and precedence are in `references/table-notes.md`.
+
+**Table notes are GM-only.** They name secrets' locations and what
+the monsters do. Never read one aloud or quote it to players.
 
 ## Two Modes — Relay Is The Default
 
@@ -328,8 +355,9 @@ run?"*
 {Title} - Play Notes.md`, with `canon_status: AUTHORITATIVE`.
 Create the session index alongside it, set
 `documents.play_notes`, advance `status` to `played`.
-**Neither vault has a canon session yet** — in both, the first canon
-play is Session 01.
+The number follows the highest session in the chapter's `Sessions/`
+folder; **in a vault with none yet, the first canon play is
+Session 01.**
 
 **Dry run** → `_inbox/Dry Run - {Encounter} - YYYY-MM-DD.md`,
 `canon_status: DRAFT`, `dry_run: true`, opening with a

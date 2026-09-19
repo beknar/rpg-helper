@@ -29,6 +29,10 @@ and ask in one line only if it is genuinely ambiguous. A project's
 own `CLAUDE.md` may name its vaults; it outranks your guess.
 **Never read across two vaults.**
 
+**If the vault has `_meta/table-notes.md`, read its spoiler section.**
+It says which GM-only mechanisms this campaign uses, and the leak check
+below depends on knowing where the secrets live.
+
 **Then settle the run.** Dry runs live in `_inbox/` as
 `Dry Run - {Name} - YYYY-MM-DD.md`, with `dry_run: true`.
 

@@ -84,6 +84,10 @@ previous party** — this is the step that goes stale first.
 
 ### Add the campaign's own questions
 
+**If the vault has `_meta/table-notes.md`, use its §Party Audit.** It
+names this campaign's questions and its usual binding constraint. The
+two tables below are the generic fallback.
+
 **Low tier (roughly levels 1-5).** Low-level parties fail on
 attrition, not on capability gaps.
 

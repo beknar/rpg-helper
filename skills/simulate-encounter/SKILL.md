@@ -87,6 +87,13 @@ it is not this skill.** Here, you decide for everyone.
 
 Full procedure: `references/loading-combatants.md`.
 
+**Read `_meta/table-notes.md` first if the vault has one.** It is where
+a campaign says what its vault is actually like — which block format
+its creatures use, how many carry `## Tactics`, where its shelf lives,
+which entries have damaged or missing numbers. It saves you guessing
+and it outranks the generic advice in the references. It never
+outranks `_World/_flags.md` or a stat block.
+
 **Side A (usually the PCs).** Named PCs, pregens, an entire party, or a
 description ("four 5th-level adventurers"). Resolve names against
 `Characters/PCs/` first, then `Characters/Pregens/`, then

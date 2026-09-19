@@ -5,7 +5,9 @@ invocation, and again when narration goes flat.
 
 ## Register
 
-**Take the register from the campaign, not from a default.** The two
+**Take the register from the campaign, not from a default.** If the
+vault has `_meta/table-notes.md`, its §Register is the campaign's own
+voice and replaces both sketches below. Otherwise, the two
 sketches below are the common poles — a low-tier village game and a
 high-tier ruin — and most campaigns sit near one of them. A campaign
 that is neither (courtly intrigue, seafaring, modern horror) takes its

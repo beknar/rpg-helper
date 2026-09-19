@@ -1,7 +1,7 @@
 {
   "name": "rpg-helper",
   "description": "Claude runs your tabletop RPG. Three D&D 5e (2014) skills over an Obsidian campaign vault: narrate-encounter puts Claude in the DM's chair while people play their characters, simulate-encounter fights a party against a monster set with nobody playing, to answer who would win, and dry-run-recap turns a finished dry run into a player-facing recap for a campaign site.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "MIT",
   "author": {
     "name": "beknar"

@@ -125,7 +125,8 @@ narrate their outcome before they're made.
 ## Environmental Clocks
 
 Campaigns run clocks, and they are not background detail. **Track what
-the chapter and encounter files specify** — every module puts the
+the chapter and encounter files specify**, and the §Clocks list in
+`_meta/table-notes.md` where the vault has one — every module puts the
 pressure somewhere, and it is rarely the same place twice.
 
 ### Low tier — light, rest and the road

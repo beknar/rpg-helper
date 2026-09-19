@@ -29,6 +29,21 @@ If you want an answer rather than a game, you want `simulate-encounter`.
 Installing gm-apprentice itself is recommended but not required — the skills
 read the vault directly and call none of its code.
 
+### Optional: tell the skills about your campaign
+
+The skills are written for any campaign, so they talk about "a low-tier
+village game" or "the signature threat". A vault can carry
+**`_meta/table-notes.md`** to say what those mean for *its* campaign: the
+voice to narrate in, the capability questions that decide its fights, the
+clocks to track, the safety list, which spoiler mechanisms it uses, and how
+its creature files are laid out. Where the file speaks, it replaces the
+generic advice; where it's silent, nothing changes. Your ruling log, config
+and stat blocks still win over it.
+
+The format is in
+`skills/narrate-encounter/references/table-notes.md`. Keep it to a page or
+two, and keep it GM-only.
+
 ---
 
 ## Install

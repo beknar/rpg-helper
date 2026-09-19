@@ -101,7 +101,8 @@ Handle it explicitly and briefly.
 away). Take the answers at face value, record them for the session,
 don't re-litigate.
 
-**Use the vault's own list if it has one**, and use the GM's wording
+**Use the vault's own list if it has one**, plus anything
+`_meta/table-notes.md` §Safety adds to it, and use the GM's wording
 rather than your own. A Session Zero file under `Chapters/` or
 `_Campaign/` is the usual home for it. **Read that file rather than
 reciting from memory**, in case it has moved on.

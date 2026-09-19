@@ -63,6 +63,16 @@ sides belong to the other skill.
 some give every creature a `## Tactics` section, some give it to a handful.
 Write "check the vault" rather than a number.
 
+**Campaign specifics belong in the vault's `_meta/table-notes.md`, not in
+the skills.** That optional file is how a campaign supplies its own
+register, audit questions, clocks, safety list, spoiler surfaces and
+creature-file layout; format in
+`skills/narrate-encounter/references/table-notes.md`. When a user wants
+the skills to know something about *their* campaign, the answer is that
+file. **Its precedence is fixed**: it replaces a generic sketch, and it
+never outranks `_World/_flags.md`, `vault-config.md`, an encounter file or
+a stat block.
+
 ## Editing a skill
 
 **The `description:` in SKILL.md frontmatter is the routing surface.** It is

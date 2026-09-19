@@ -10,7 +10,7 @@
     {
       "name": "rpg-helper",
       "source": "./",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "description": "Three D&D 5e (2014) skills over an Obsidian campaign vault: narrate-encounter runs the table with Claude as DM, simulate-encounter fights a party against monsters with nobody playing to answer who would win, and dry-run-recap turns a finished dry run into a player-facing recap for a campaign site"
     }
   ]
